@@ -1,8 +1,6 @@
 from collections import Iterator
 from typing import Optional
 from datetime import datetime, timedelta
-# import json
-
 from flask import Flask, request
 app = Flask(__name__)
 
@@ -15,12 +13,10 @@ def date() -> str:
         :rtype: str
     """
     if request.method == 'POST':
-        # data = json.loads(request.data)
         data = request.form
         start_date = valid_date(data['start_date'])
         end_date = valid_date(data['end_date'])
         if start_date <= end_date and end_date is not None:
-        # if start_date is not None and end_date is not None and start_date < end_date:
             resp_data = '\n'.join([str(day) for day in data_gen(start_date, end_date)])
         else:
             resp_data = 'Incorrect data'
@@ -80,4 +76,4 @@ def write_result(data: str) -> None:
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="localhost", port=8000, debug=True)
