@@ -1,4 +1,4 @@
-FROM python:3.8-buster
+FROM python:3.8
 
 # устанавливаем параметры сборки
 RUN apt-get update && \
@@ -9,15 +9,14 @@ RUN python3 --version
 RUN pip3 --version
 
 # задаем рабочую директорию для контейнера
-WORKDIR  /usr/src/test-j
+WORKDIR  /usr/src/app
 
 # устанавливаем зависимости python
-COPY requirements.txt .
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # копируем все файлы из корня проекта в рабочую директорию
-COPY test-j/ /test-j/
-RUN ls -la /test-j/*
+COPY . .
 
 # запускаем приложение Python
-CMD ["python3", "/src/main.py"]
+CMD ["python", "./main.py"]
