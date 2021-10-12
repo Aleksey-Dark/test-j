@@ -1,4 +1,3 @@
-from collections import Iterator
 from typing import Optional
 from datetime import datetime, timedelta
 from flask import Flask, request
@@ -48,7 +47,7 @@ def valid_date(v_date: str) -> Optional[datetime]:
         return None
 
 
-def data_gen(s_date: datetime, e_date: datetime) -> Iterator[datetime]:
+def data_gen(s_date: datetime, e_date: datetime):
     """
     Функция - генератор дат в заданном диапазоне, с шагом 1 день
 
