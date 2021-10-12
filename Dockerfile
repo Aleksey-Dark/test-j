@@ -12,7 +12,7 @@ RUN pip3 --version
 WORKDIR  /usr/src/app
 
 # устанавливаем зависимости python
-COPY /test-j /usr/src/app
+COPY ./ /usr/src/app
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
