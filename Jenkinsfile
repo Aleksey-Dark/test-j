@@ -4,9 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh 'docker build . -t flask'
-        sh 'docker ps -a'
-        sh 'docker ps'
+        sh 'docker build . -t test_python'
       }
     }
 
@@ -21,15 +19,12 @@ pipeline {
         }
       }
     }
-    
+
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'docker volume create python-data'
-        sh 'docker run --name python-web --detach --rm --network python-app --network-alias python-app --publish 8000:8000 --volume python-data:/usr/src/app flask'
-        sh 'docker ps -a'
+        sh 'docker run -d -p 8000:8000 test_python'
         sh 'docker ps'
-        sh 'docker exec python-web bash -c \'pwd\''
       }
     }
   }
