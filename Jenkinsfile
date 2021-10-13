@@ -14,7 +14,7 @@ pipeline {
         sh 'docker volume create python-data'
         sh 'docker run --name python-app --rm --detach --network python-app --publish 80:8000 flask'
         sh 'docker ps'
-        sh 'docker exec python-web bash -c \'pwd\''
+        sh 'docker exec python-app bash -c \'pwd\''
       }
     }
   }
