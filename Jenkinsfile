@@ -5,6 +5,8 @@ pipeline {
       steps {
         echo 'Building..'
         sh 'docker build . -t flask'
+        sh 'docker ps -a'
+        sh 'docker ps'
       }
     }
 
@@ -25,6 +27,7 @@ pipeline {
         echo 'Deploying....'
         sh 'docker volume create python-data'
         sh 'docker run --name python-app --rm --detach --network python-app --network-alias python-app --publish 8000:8000 --volume python-data:/usr/src/app flask'
+        sh 'docker ps -a'
         sh 'docker ps'
         sh 'docker exec docker bash -c \'pwd\''
       }
