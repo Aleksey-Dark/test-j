@@ -4,9 +4,8 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building..'
-        sh 'ls -l'
-        sh 'docker build .'
-        sh 'docker ps -a'
+        sh 'docker build . -t test:1'
+        sh 'docker ps'
       }
     }
 
@@ -19,6 +18,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
+        sh 'docker run -d test:1'
       }
     }
 
