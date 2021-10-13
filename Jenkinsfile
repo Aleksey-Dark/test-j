@@ -23,7 +23,7 @@ pipeline {
                     if (doc_containers) {
                         sh "docker stop ${doc_containers}"
                     }}
-        sh 'docker run -d -p 80:8000 test:1'
+        sh 'docker run -d -p 8000:8000 test:1'
         sh 'docker ps'
       }
     }
