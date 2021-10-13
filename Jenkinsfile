@@ -8,11 +8,23 @@ pipeline {
       }
     }
 
+    stage('Stop old') {
+      steps {
+        echo 'Stop old..'
+        script {
+            def doc_containers = sh(returnStdout: true, script: 'docker container ps -aq').replaceAll("\n", " ")
+                if (doc_containers) {
+                    sh "docker stop ${doc_containers}"
+                }
+        }
+      }
+    }
+    
     stage('Deploy') {
       steps {
         echo 'Deploying....'
         sh 'docker volume create python-data'
-        sh 'docker run --name python-app --rm --detach --network python-app --network-alias python-app --publish 80:8000 --volume python-data:/usr/src/app flask'
+        sh 'docker run --name python-app --rm --detach --network python-app --network-alias python-app --publish 8000:8000 --volume python-data:/usr/src/app flask'
         sh 'docker ps'
         sh 'docker exec docker bash -c \'pwd\''
       }
