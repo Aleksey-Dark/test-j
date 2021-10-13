@@ -17,4 +17,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
 
+CMD ["pwd"]
+
+CMD ["ls -l"]
+
 CMD ["python", "./test/main.py"]
