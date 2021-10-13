@@ -26,10 +26,10 @@ pipeline {
       steps {
         echo 'Deploying....'
         sh 'docker volume create python-data'
-        sh 'docker run --name python-app --detach --network python-app --network-alias python-app --publish 8000:8000 --volume python-data:/usr/src/app flask'
+        sh 'docker run --name python-web --detach --rm --network python-app --network-alias python-app --publish 8000:8000 --volume python-data:/usr/src/app flask'
         sh 'docker ps -a'
         sh 'docker ps'
-        sh 'docker exec docker bash -c \'pwd\''
+        sh 'docker exec python-web bash -c \'pwd\''
       }
     }
   }
