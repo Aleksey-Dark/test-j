@@ -8,23 +8,14 @@ pipeline {
       }
     }
 
-    stage('Stop old') {
-      steps {
-        echo 'Stop old..'
-        script {
-            def doc_containers = sh(returnStdout: true, script: 'docker container ps -aq').replaceAll("\n", " ")
-                if (doc_containers) {
-                    sh "docker stop ${doc_containers}"
-                }
-        }
-      }
-    }
-
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'docker run -d -p 8000:8000 test_python'
+        sh 'docker network create python-app'
+        sh 'docker volume create python-data'
+        sh 'docker run --name python-app --rm --detach --network python-app --publish 8000:8000 --volume python-data:./ python-web'
         sh 'docker ps'
+        sh 'sudo docker exec python-web bash -c \'pwd\''
       }
     }
   }
