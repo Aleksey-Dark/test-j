@@ -21,4 +21,4 @@ CMD ["pwd"]
 
 CMD ["ls -l"]
 
-CMD ["python", "./test/main.py"]
+CMD ["python", "main.py"]
