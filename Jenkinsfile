@@ -11,7 +11,14 @@ pipeline {
     stage('Stop old') {
       steps {
         echo 'Stop old..'
-         sh 'docker ps -a'
+        sh 'docker ps'
+        script {
+            def doc_containers = sh(returnStdout: true, script: 'docker container ps -aq').replaceAll("\n", " ")
+                if (doc_containers) {
+                    sh "docker stop ${doc_containers}"
+                }
+        }
+        sh 'docker ps -a'
       }
     }
 
