@@ -23,7 +23,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'docker run -drm -p 8000:8000 test_python'
+        sh 'docker run -d -p 8000:8000 test_python --rm'
         sh 'docker ps'
       }
     }
