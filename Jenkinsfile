@@ -19,6 +19,7 @@ pipeline {
       steps {
         echo 'Deploying....'
         sh 'docker run -d test:1'
+        sh 'docker ps'
       }
     }
 
