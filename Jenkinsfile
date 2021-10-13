@@ -25,6 +25,7 @@ pipeline {
         echo 'Deploying....'
         sh 'docker run --name python-web --detach --rm --network python-app -p 8000:8000 test_python'
         sh 'docker ps'
+        sh 'docker exec python-web bash -c \'pwd\''
       }
     }
   }
