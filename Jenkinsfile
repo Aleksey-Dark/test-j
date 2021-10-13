@@ -18,7 +18,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'docker stop'
+        sh 'docker stop test'
         sh 'docker run -d test:1 -p 80:8000'
         sh 'docker ps'
       }
