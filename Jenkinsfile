@@ -23,7 +23,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'docker run -d -p 8000:8000 test_python'
+        sh 'docker run --name python-web --detach --rm --network python-app -p 8000:8000 test_python'
         sh 'docker ps'
       }
     }
