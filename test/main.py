@@ -1,4 +1,3 @@
-from collections import Iterator
 from typing import Optional
 from datetime import datetime, timedelta
 from flask import Flask, request
