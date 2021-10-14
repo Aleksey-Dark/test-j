@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3
 
 # устанавливаем параметры сборки
 RUN apt-get update && apt-get install -y gcc make apt-transport-https ca-certificates build-essential
@@ -18,4 +18,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 80
 
 CMD ["chmod", "+x", "main.py"]
-CMD ["python", "main.py"]
+CMD ["python3", "main.py"]
