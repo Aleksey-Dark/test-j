@@ -17,4 +17,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 80
 
+CMD ["chmod", "+x", "main.py"]
 CMD ["python", "main.py"]
