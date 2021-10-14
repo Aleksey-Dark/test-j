@@ -5,6 +5,7 @@ pipeline {
       steps {
         echo 'Building..'
         sh 'docker build . -t test_python'
+        sh 'docker network create python-app'
       }
     }
 
