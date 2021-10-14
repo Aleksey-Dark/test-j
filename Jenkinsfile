@@ -26,6 +26,7 @@ pipeline {
         echo 'Deploying....'
         sh 'docker run --name python-web --rm -itd -p 80:5000 test_python'
         sh 'docker ps'
+        sh 'docker ps -a'
       }
     }
   }
