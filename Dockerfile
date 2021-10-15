@@ -18,4 +18,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 80
 
 CMD ["chmod", "+x", "main.py"]
-CMD ["python3", "main.py", "*", "Running on http://0.0.0.0:5000/"]
+CMD ["python3", "main.py", "*", "Running on 0.0.0.0:5000"]
