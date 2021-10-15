@@ -24,7 +24,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'docker run --name python-web --rm -d -p 80:5000 test_python'
+        sh 'docker run --name python-web --rm -d -p 80:80 test_python'
         sh 'docker ps'
         sh 'docker ps -a'
       }
