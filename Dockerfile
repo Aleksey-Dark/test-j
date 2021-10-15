@@ -9,11 +9,9 @@ RUN pip3 --version
 
 # задаем рабочую директорию для контейнера
 WORKDIR  /usr/src/app
-# WORKDIR /var/www
 
 # устанавливаем зависимости python
 COPY /test /usr/src/app
-# COPY /test /var/www
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
