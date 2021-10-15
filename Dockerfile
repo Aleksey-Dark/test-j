@@ -12,7 +12,8 @@ RUN pip3 --version
 WORKDIR /var/www
 
 # устанавливаем зависимости python
-COPY /test /usr/src/app
+# COPY /test /usr/src/app
+COPY /test /var/www
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
